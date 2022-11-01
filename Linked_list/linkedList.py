@@ -122,7 +122,8 @@ class LinkedList:
         
         elif index == 1:
             temp = self.head.next
-            self.head = temp.next
+            first = self.head
+            first.next = temp.next
             del temp
         
         else:
@@ -193,7 +194,7 @@ if __name__ == "__main__":
     link.deleteFromEnd()
     link.traverseLinkedList()
 
-    link.deleteFromIndex(6)
+    link.deleteFromIndex(1)
     link.traverseLinkedList()
 
     link.reverseTheLinkedList()

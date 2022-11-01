@@ -81,6 +81,77 @@ class DoublyLinkedList:
                 print(f"provided index doesn't exists so adding it at end")
                 self.insertAtEnd(value)
 
+
+    def deleteFromStart(self):
+        print("deleting value from start")
+        if self.head != None and self.head.next != None:
+            start = self.head
+            first = start.next
+            first.prev = None
+            self.head = first
+            print(f"delete value {start.value} from start")
+            del start
+
+        elif self.head!=None and self.head.next == None:
+            temp = self.head
+            self.head = None
+            del temp
+
+        else:
+            print("invalid linked list, cannot delete at start")
+
+    def deleteFromEnd(self):
+        print("deleting value from end")
+        if self.head != None:
+            first = self.head
+            if (first.next == None):
+                self.deleteFromStart()
+            else:
+                temp = first.next
+                while(temp.next!=None):
+                    temp = temp.next
+                    first = first.next
+                first.next = None
+                print(f"delete value {temp.value} from end")
+                del temp
+        
+    def deleteFromIndex(self, index):
+        print(f"deleting node from an index {index}")
+
+        if self.head == None:
+            print(f"invalid linked list, cannot delete at index value: {index}")
+
+        elif index == 0:
+            self.deleteFromStart()
+        
+        elif index == 1:
+            temp = self.head.next
+            first = self.head
+            second = temp.next
+            second.prev = self.head
+            first.next = second
+            del temp
+        
+        else:
+            count = 0
+            temp = self.head
+            while (count < index and temp!=None):
+                if (count == index-1):
+                    if temp.next == None:
+                        print("error in deleting, None value")
+                        break
+
+                    else:
+                        nodeToBeDeleted = temp.next 
+                        temp.next = nodeToBeDeleted.next
+                        temp.next.prev = temp
+                        del nodeToBeDeleted
+                        break
+
+                else:
+                    count += 1
+                    temp = temp.next
+
 if __name__ == "__main__":
     link = DoublyLinkedList()
     link.head = Node(1)
@@ -104,4 +175,10 @@ if __name__ == "__main__":
     link.traverseDoublyLinkedList()
 
     link.insertAtAnIndex(9, 8)
+    link.traverseDoublyLinkedList()
+
+    link.deleteFromEnd()
+    link.deleteFromStart()
+    link.deleteFromIndex(4)
+    link.deleteFromIndex(1)
     link.traverseDoublyLinkedList()
