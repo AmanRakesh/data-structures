@@ -152,6 +152,34 @@ class DoublyLinkedList:
                     count += 1
                     temp = temp.next
 
+
+    def reverseDoublyLinkedList(self):
+        print("reversing the doubly linked list")
+        start = self.head
+        temp = start.next
+        start.next = None
+        start.prev = temp
+        thirdTemp = None
+
+        while temp != None:
+            secondTemp = temp
+
+            if (thirdTemp == None):
+                temp = temp.next
+                secondTemp.next = start
+                secondTemp.prev = temp
+                thirdTemp = secondTemp
+
+            else:
+                temp = temp.next
+                secondTemp.next = thirdTemp
+                secondTemp.prev = temp
+                thirdTemp = secondTemp
+
+
+        self.head = thirdTemp
+
+
 if __name__ == "__main__":
     link = DoublyLinkedList()
     link.head = Node(1)
@@ -181,4 +209,7 @@ if __name__ == "__main__":
     link.deleteFromStart()
     link.deleteFromIndex(4)
     link.deleteFromIndex(1)
+    link.traverseDoublyLinkedList()
+
+    link.reverseDoublyLinkedList()
     link.traverseDoublyLinkedList()
