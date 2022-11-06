@@ -70,7 +70,8 @@ class Queue:
 
 if __name__ == "__main__":
     start = Queue()
-
+    start.head = None
+    start.tail = None
     start.push(1)
     start.push(2)
     start.push(3)
