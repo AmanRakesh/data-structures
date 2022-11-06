@@ -24,11 +24,14 @@ class Queue:
             temp = Node(value)
             self.head = temp
             self.tail = temp
+            self.size = 1
         
         else:
             temp = Node(value)
             temp.next = self.head
             self.head = temp
+
+            self.size += 1
     
     def pop(self):
         if (self.tail != None):
@@ -55,17 +58,14 @@ class Queue:
 
     def back(self):
         if self.tail!= None:
-            print(f"back of queue: {self.head.value}")
+            print(f"back of queue: {self.tail.value}")
             return self.tail.value
 
         else:
             print("Queue empty")
 
     def size(self):
-        if self.head != None:
-            pass
-        else:
-            return self
+        return self.size
 
 
 if __name__ == "__main__":
