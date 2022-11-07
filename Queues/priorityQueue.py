@@ -11,4 +11,10 @@ class PriorityQueue:
         head = None
         tail = None
         size = 0
+
+    def enqueue(self):
+        pass
+
+    def dequeue(self):
+        pass
         
