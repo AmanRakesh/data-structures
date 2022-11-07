@@ -1,9 +1,10 @@
+#linked list implementation of priority queue
 class Node:
 
-    def __init__(self, value):
+    def __init__(self, value, priority):
         self.next = None
         self.value = value
-        self.priority = None
+        self.priority = priority
 
 class PriorityQueue:
 
@@ -17,4 +18,11 @@ class PriorityQueue:
 
     def dequeue(self):
         pass
+
+    def peek(self):
+        return self.head.value
+
+    def isEmpty(self):
+        return True if self.head == None else False
+
         
