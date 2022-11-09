@@ -75,4 +75,6 @@ class PriorityQueue:
     def size(self):
         return self.size
 
-        
+if __name__ == '__main__':
+    self.head = Node(1)
+    
