@@ -1,4 +1,4 @@
-#linked list implementation of priority queue with making the descending order priority queue
+#linked list implementation of priority queue with making the ascending order priority queue
 class Node:
 
     def __init__(self, value, priority):
@@ -11,7 +11,6 @@ class PriorityQueue:
     def __init__(self):
         head = None
         tail = None
-        size = 0
 
     def enqueue(self, value, priority):
         print(f"enqueueing value: {value} with priority: {priority}")
@@ -22,7 +21,6 @@ class PriorityQueue:
             start = Node(value, priority)
             self.head = start
             self.tail = start
-            self.size += 1
 
         elif start.next == None:
             temp = Node(value, priority)
@@ -34,6 +32,7 @@ class PriorityQueue:
             else:
                 start.next = temp
                 self.tail = temp
+
 
         else:
             temp = Node(value, priority)
@@ -48,17 +47,22 @@ class PriorityQueue:
                 if (start.next != end):
 
                     if start.next.value < value:
-                        temp = None(value, priority)
+                        temp = Node(value, priority)
                         temp.next = start.next
                         start.next = temp
-                
+
+                else:
+                    temp = Node(value, priority)
+                    start.next = temp
+                    self.tail = temp
+
 
 
 
     def dequeue(self):
-        print(f"dequeueing value: {self.tail.value} with priority: {self.tail.priority} from tail")
         start = self.head
         end = self.tail
+        print(f"dequeueing value: {end.value} with priority: {end.priority} from tail")
         if start!=None:
             while (start.next!=end):
                 start = start.next
@@ -67,14 +71,36 @@ class PriorityQueue:
             del end
 
     def peek(self):
-        return self.head.value
+        return self.tail.value
 
     def isEmpty(self):
         return True if self.head == None else False
 
     def size(self):
-        return self.size
+        start = self.head
+        end = self.tail
+        count = 0
+        while start!=end:
+            count = count + 1
+            start = start.next
+
+        return count
 
 if __name__ == '__main__':
-    self.head = Node(1)
+    queue = PriorityQueue()
+    queue.head = None
+    queue.tail = None
+    queue.enqueue(0,1)
+    queue.enqueue(1,2)
+    queue.enqueue(2,1.5)
+    queue.enqueue(3,3)
+    queue.enqueue(4,2.5)
+    queue.enqueue(5, 5)
+    print(queue.peek())
+    print(queue.size())
+
+    queue.dequeue()
+    print(queue.peek())
+    
+    
     
