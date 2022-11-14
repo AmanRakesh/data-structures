@@ -24,4 +24,4 @@ class BinaryTrees:
                     root.left = temp
                 
                 else:
-                    self.insert()
+                    self.insert(value)
