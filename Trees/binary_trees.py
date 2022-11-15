@@ -25,3 +25,11 @@ class BinaryTrees:
                 
                 else:
                     self.insert(value)
+
+
+    def search(self):
+        pass
+
+    def inorderTraversal(self):
+        pass
+
